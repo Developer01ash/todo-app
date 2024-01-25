@@ -1,6 +1,6 @@
 const User = require("../models/User");
 const jwt = require("jsonwebtoken");
-const bcrypt = require("bcrypt");
+// const bcrypt = require("bcrypt");
 const passport = require("passport");
 
 exports.register = async function (req, res) {
@@ -13,7 +13,7 @@ exports.register = async function (req, res) {
         error: `Sorry, already a user with the email: ${email}`,
       });
     }
-    const hashedPassword = await bcrypt.hash(password, 10);
+    const hashedPassword = password;
     const newUser = new User({
       email: email,
       username: username,

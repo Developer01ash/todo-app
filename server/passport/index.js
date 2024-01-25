@@ -1,6 +1,6 @@
 const passport = require("passport");
 const User = require("../models/User");
-const bcrypt = require("bcrypt");
+// const bcrypt = require("bcrypt");
 const LocalStrategy = require("passport-local").Strategy;
 var passportJWT = require("passport-jwt");
 var ExtractJwt = passportJWT.ExtractJwt;
@@ -55,7 +55,7 @@ var strategyLocal = new LocalStrategy(
           message: "Invalid credentials.",
         });
       }
-      const isPasswordValid = await bcrypt.compare(password, user.password);
+      const isPasswordValid = password === user.password;
       if (!isPasswordValid) {
         console.log("Password check failed for user:", password);
         return done(null, false, {
