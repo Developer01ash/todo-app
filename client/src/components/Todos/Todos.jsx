@@ -71,6 +71,8 @@ export const Todos = () => {
       const res = await HttpClient.delete(`/todo/delete/${taskId}`);
       if (res.status === 200) {
         getData();
+        setEditTodoId(null)
+        setTodo('')
       }
     } catch (error) {
       console.log("error delete", error);
